@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ejemplo de secciones</title>
+		<style>
+
+			#marco { background-color: #eee; width: 600px; height: 200px; margin: 100px auto; }
+			#marco > div { float: left; }
+			#menu { width: 25%; height: 100%; }
+			#menu > div { height: 25%; }
+			#menu > div:hover { background-color: #9a9; }
+			#menu > .activo { background-color: #999; }
+
+			#secciones { width: 75%; height: 100%; background-color: #eaa; }
+			#secciones > div { display: none; height: 100%; }
+			#secciones > .activo { display: block; }
+			
+			#seccion1 { background-color: #cdd; }
+			#seccion2 { background-color: #dcd; }
+			#seccion3 { background-color: #ddc; }
+			#seccion4 { background-color: #ccd; }
+		</style>
+	</head>
+	<body>
+		<p>Este ejemplo usa una p&aacute;gina con varias secciones que se muestran en funci&oacute;n de un men&uacute; (al estilo de un tab)</p>
+		<div id="marco">
+			<div id="menu">
+				<div id="menu1" onclick="cambiarSeccion(1)">Seccion 1</div>
+				<div id="menu2" onclick="cambiarSeccion(2)">Seccion 2</div>
+				<div id="menu3" onclick="cambiarSeccion(3)">Seccion 3</div>
+				<div id="menu4" onclick="cambiarSeccion(4)">Seccion 4</div>
+			</div>
+			<div id="secciones">
+				<div id="seccion1">Esto es la seccion 1</div>
+				<div id="seccion2">Esto es la seccion 2</div>
+				<div id="seccion3">Esto es la seccion 3</div>
+				<div id="seccion4">Esto es la seccion 4</div>
+			</div>
+		</div>
+
+		<script>
+			var actual = -1; /* seccion actual */
+			function cambiarSeccion (n) { /* Cambia la secciona activa asociandole la clase activo */
+				if (actual >= 0) { /* si hay una seccion visible (con clase activo) quitarla */
+					document.getElementById("seccion" + actual).className = "";
+					document.getElementById("menu" + actual).className = "";
+				}
+				/* poner la nueva seccion activa */
+				document.getElementById("seccion" + n).className = "activo";
+				document.getElementById("menu" + n).className = "activo";
+				actual = n;
+			}
+			cambiarSeccion(1); /* inicialmente activo la seccion 1 */
+		</script>
+	</body>
+</html>
